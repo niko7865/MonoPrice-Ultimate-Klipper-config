@@ -1,6 +1,19 @@
 # Wanhao Duplicator 6/ Monoprice Ultimate
 
-Klipper printer.cfg file for Wanhao Duplicator 6/ Monoprice Ultimate
+Klipper printer.cfg file for Wanhao Duplicator 6/ Monoprice Ultimate, updated for current Klipper
+(hardware pin names, `rotation_distance`, OLED display support).
+
+## Usage
+
+1. Build and flash Klipper for the board: in `make menuconfig` choose Atmega AVR,
+   atmega2560, 16MHz, serial (USB) at 250000 baud, then `make flash FLASH_DEVICE=/dev/ttyACM0`.
+2. Copy `printer-wanhao-duplicator-6-Monoprice Ultimate-2016.cfg` to `~/printer_data/config/printer.cfg`.
+3. Set `serial:` in `[mcu]` to your board's id from `ls /dev/serial/by-id/*`.
+4. If you use Mainsail or Fluidd, add its `[include mainsail.cfg]` / `[include fluidd.cfg]`.
+5. Re-run `PID_CALIBRATE HEATER=extruder TARGET=210` and `PID_CALIBRATE HEATER=heater_bed TARGET=60`,
+   and calibrate the extruder `rotation_distance` and `pressure_advance` for your hardware.
+
+The pin table below is the original Marlin assignment the config was derived from.
 
 Original Marlin firmware: https://github.com/garychen99/Duplicator-6-firmware-version-3.1
 
